@@ -59,6 +59,27 @@ $(function() {
 				return new Date().getTime() - startTime > 35 * 1000 ;
 			},
 			text:'Get 5 achievements!<br />Okay i will stop now...'
+		},
+		{
+			show:false,
+			check:function() {
+				return score < -100;
+			},
+			text:'Get -100 clicks!<br />Are you sure about this?'
+		},
+		{
+			show:false,
+			check:function() {
+				return score > 100;
+			},
+			text:'Get -1000 clicks!<br />there is nothing for you here!'
+		},
+		{
+			show:false,
+			check:function() {
+				return score > 100;
+			},
+			text:'Get -5000 clicks!<br />There is no hidden ending this way...!'
 		}
 	];
 
