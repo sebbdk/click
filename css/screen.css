@@ -235,17 +235,25 @@ h1 {
 	color: #c9595e;
 }
 
-.extra-click.fb {
+.extra-click.rotary {
 	background-color: #354d7d;
 	border-color: #FFFFFF;
 	color: #FFFFFF;
 	z-index: 100;
+	line-height: 80px;
 
     -webkit-animation: myOrbitLong 26s linear infinite; /* Chrome, Safari 5 */
        -moz-animation: myOrbitLong 26s linear infinite; /* Firefox 5-15 */
          -o-animation: myOrbitLong 26s linear infinite; /* Opera 12+ */
             animation: myOrbitLong 26s linear infinite; /* Chrome, Firefox 16+, 
                                                       IE 10+, Safari 5 */
+}
+
+.extra-click.time {
+	border-color: #00B358;
+	background-color: #228653;
+	font-size: 16px;
+	line-height: 78px
 }
 
 .achievement {
@@ -290,6 +298,10 @@ h1 {
 	line-height: 20px;
 }
 
-.extra {
+.extra, .persistant {
 	position: absolute;
+}
+
+.time {
+	display: none;
 }

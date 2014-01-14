@@ -86,7 +86,7 @@ $(function() {
 	$(window).on('resize', update);	
 	$(document).on('mousedown', '.click', function() {$('.click').addClass('mdown')});
 	$(document).on('mouseup', '.click', clickmMouseup);
-	$(document).on('mouseup', '.extra-click', extraClickmMouseup);
+	$(document).on('mouseup', '.extra .extra-click', extraClickmMouseup);
 	$(document).on('click', '.share', share);
 
 
@@ -94,33 +94,38 @@ $(function() {
 	setInterval(function() {
 		if(clicked) {
 			var extraClick = Math.random() > 0.4 ? extraGood.clone():extraBad.clone();
-			$('body').append(extraClick);
+			$('.extra').append(extraClick);
 			extraClick.css('top', ($(window).height() - extraClick.outerHeight()) * Math.random());
 			extraClick.css('left', ($(window).width() - extraClick.outerWidth()) * Math.random());
 
-			if($('.extra-click').size() > 90) {
+			if($('.extra .extra-click').size() > 90) {
 				$('h1').fadeIn();
 				$('body').css('box-shadow', '0 0 100px red inset');
 			}
 
-			if($('.extra-click').size() > 100) {
-				$('.extra-click').fadeOut();
+			if($('.extra .extra-click').size() > 100) {
+				$('.extra .extra-click').fadeOut();
 				$('h1').fadeOut();
-				$('.extra-click').remove();
+				$('.extra .extra-click').remove();
 				$('body').css('box-shadow', '');
 				score = 0;
-			}			
+			}		
 		}
 	}, 1000);
 
 	update();
+	setInterval(function(){
+		update();
+	}, 800);
 	$('.click').fadeIn();
 	$('.click').addClass('loaded');
+	setTimeout(function() {
+		$('.time').fadeIn();
+	}, 2000)
 
 /**
  * Methods
  */
-
 	function clickmMouseup(evt) {
 		evt.preventDefault();
 		$('.click').removeClass('mdown')
@@ -149,6 +154,20 @@ $(function() {
 	}
 
 	function update(evt) {
+		//update position
+		var y = ($(window).height() / 2) - (($('.click').outerHeight()) / 2);
+		$('.click').css('top', y);
+
+		var x = ($(window).width() / 2) - (($('.click').outerWidth()) / 2);
+		$('.click').css('left', x);
+
+		$('.extra, .persistant').css('top',  ($(window).height() / 2) - 43);
+		$('.extra, .persistant').css('left', ($(window).width() / 2) - 43);
+		
+		if(!clicked) {
+			return;
+		}
+
 		//update score
 		if(score) {
 			var mod = modifier > 0 ? '+':'';
@@ -170,15 +189,21 @@ $(function() {
 			}
 		});
 
-		//update position
-		var y = ($(window).height() / 2) - (($('.click').outerHeight()) / 2);
-		$('.click').css('top', y);
+		String.prototype.toHHMMSS = function () {
+			var sec_num = parseInt(this, 10); // don't forget the second param
+			var hours   = Math.floor(sec_num / 3600);
+			var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+			var seconds = sec_num - (hours * 3600) - (minutes * 60);
 
-		var x = ($(window).width() / 2) - (($('.click').outerWidth()) / 2);
-		$('.click').css('left', x);
+			if (hours   < 10) {hours   = "0"+hours;}
+			if (minutes < 10) {minutes = "0"+minutes;}
+			if (seconds < 10) {seconds = "0"+seconds;}
+			var time    = hours+':'+minutes+':'+seconds;
+			return time;
+		}
 
-		$('.extra').css('top',  ($(window).height() / 2) - 43);
-		$('.extra').css('left', ($(window).width() / 2) - 43);
+		var timegone = ((new Date().getTime() - startTime)/1000).toString().toHHMMSS();
+		$('.time').html(timegone);
 	}
 
 	function share() {
