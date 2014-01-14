@@ -70,14 +70,14 @@ $(function() {
 		{
 			show:false,
 			check:function() {
-				return score > 100;
+				return score < -1000;
 			},
 			text:'Get -1000 clicks!<br />there is nothing for you here!'
 		},
 		{
 			show:false,
 			check:function() {
-				return score > 100;
+				return score < -5000;
 			},
 			text:'Get -5000 clicks!<br />There is no hidden ending this way...!'
 		}
