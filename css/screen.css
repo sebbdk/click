@@ -1,0 +1,295 @@
+html,body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Josefin Sans', sans-serif;
+
+	-moz-user-select: none;
+	-webkit-user-select: none; 
+	-ms-user-select:none;
+	user-select:none;
+
+	position: relative;
+	height: 100%;
+
+	cursor: url(../img/cursor_default.png), auto;
+	/*background-image: url(../img/stripes.png);*/
+	background-color: #23212b;
+	color: #BBBBBB;
+
+	overflow: hidden;
+
+	animation-fill-mode: both;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+
+	animation-direction: alternate;
+	-webkit-animation-direction: alternate;	
+	-moz-animation-direction: alternate;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;	
+	-moz-animation-iteration-count: infinite;	
+	
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+a:hover, a:active {
+	cursor: url(../img/cursor_pointer.png), auto;
+}
+
+a {
+	text-decoration: none;
+	color: #BBBBBB;
+}
+
+h1 {
+	margin:0;
+	text-align: center;
+	font-size: 60px;
+	margin-top: 7%;
+	color: #FF4040;
+	text-shadow: 0 0 20px #FF4040;
+	display: none;
+	position: relative;
+	z-index: 10000;
+
+	animation-duration: 0.5s;
+	-webkit-animation-duration: 0.5s;	
+	-moz-animation-duration: 0.5s;	
+
+	animation-fill-mode: both;
+	-webkit-animation-fill-mode: both;
+	-moz-animation-fill-mode: both;
+
+	animation-direction: alternate;
+	-webkit-animation-direction: alternate;	
+	-moz-animation-direction: alternate;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;	
+	-moz-animation-iteration-count: infinite;	
+
+	animation-timing-function: ease;
+	-webkit-animation-timing-function: ease;
+	-moz-animation-timing-function: ease;
+
+	animation-name: pulse;
+	-webkit-animation-name: pulse;
+	-moz-animation-name: pulse;	
+}
+
+@keyframes pulse {
+	from {
+		transform: scale(1);
+	}
+
+	to {
+		transform: scale(1.2);
+	}
+}
+
+@-webkit-keyframes pulse {
+	from {
+		-webkit-transform: scale(1);
+	}
+
+	to {
+		-webkit-transform: scale(1.2);
+	}
+}
+
+@-moz-keyframes pulse {
+	from {
+		-moz-transform: scale(1);
+	}
+
+	to {
+		-moz-transform: scale(1.2);
+	}
+}
+	
+
+.click {
+	position: absolute;
+	width: 300px;
+	height: 300px;
+	line-height: 300px;
+	display: none;
+	z-index: 10000;
+	margin: auto;
+
+	border-radius: 100%;
+	background-color: #517b48;
+	border: 5px solid #82a45c;
+
+	text-decoration: none;
+	box-shadow: 0 0 60px black;
+
+	-webkit-transition: all 1s ease-in-out;
+	-webkit-transform: scale(0.01);
+	overflow: hidden;
+}
+
+.click.loaded {
+	-webkit-transform: scale(1);
+}
+
+.click.mdown span {
+	-webkit-transition: all .1s ease-in-out;
+	-webkit-transform: scale(0.5);
+}
+
+.score {
+	text-align: center;
+	display: inline-block;
+	font-size: 30px;
+	color: #82a45c;	
+	width: 100%;
+}
+
+.modifier {
+	line-height: 36px;
+	height: 70px;	
+	display: inline-block;
+}
+
+.extra-click {
+	position: absolute;
+	width: 75px;
+	height: 75px;
+	line-height: 75px;
+	font-size: 28px;
+	text-align: center;
+
+	top: 0px;
+	left: 0px;
+	margin: auto;
+
+	border-radius: 100%;
+	background-color: #517b48;
+	border: 5px solid #82a45c;
+	color: #82A308;
+
+	text-decoration: none;
+	box-shadow: 0 0 20px black;
+
+    -webkit-animation: myOrbit 10s linear infinite; /* Chrome, Safari 5 */
+       -moz-animation: myOrbit 10s linear infinite; /* Firefox 5-15 */
+         -o-animation: myOrbit 10s linear infinite; /* Opera 12+ */
+            animation: myOrbit 10s linear infinite; /* Chrome, Firefox 16+, 
+                                                      IE 10+, Safari 5 */
+}
+
+/*
+ * Set up the keyframes to actually describe the begining and end states of 
+ * the animation.  The browser will interpolate all the frames between these 
+ * points.  Again, remember your vendor-specific prefixes for now!
+ */
+@-webkit-keyframes myOrbit {
+    from { -webkit-transform: rotate(0deg) translateX(100px) rotate(0deg); }
+    to   { -webkit-transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+@-moz-keyframes myOrbit {
+    from { -moz-transform: rotate(0deg) translateX(100px) rotate(0deg); }
+    to   { -moz-transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+@-o-keyframes myOrbit {
+    from { -o-transform: rotate(0deg) translateX(100px) rotate(0deg); }
+    to   { -o-transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+@keyframes myOrbit {
+    from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+/*long range version*/
+
+@-webkit-keyframes myOrbitLong {
+    from { -webkit-transform: rotate(0deg) translateX(250px) rotate(0deg); }
+    to   { -webkit-transform: rotate(360deg) translateX(250px) rotate(-360deg); }
+}
+
+@-moz-keyframes myOrbitLong {
+    from { -moz-transform: rotate(0deg) translateX(250px) rotate(0deg); }
+    to   { -moz-transform: rotate(360deg) translateX(250px) rotate(-360deg); }
+}
+
+@-o-keyframes myOrbitLong {
+    from { -o-transform: rotate(0deg) translateX(250px) rotate(0deg); }
+    to   { -o-transform: rotate(360deg) translateX(250px) rotate(-360deg); }
+}
+
+@keyframes myOrbitLong {
+    from { transform: rotate(0deg) translateX(250px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(250px) rotate(-360deg); }
+}
+
+.extra-click.bad {
+	background-color: #933a41;
+	border-color: #c9595e;
+	color: #c9595e;
+}
+
+.extra-click.fb {
+	background-color: #354d7d;
+	border-color: #FFFFFF;
+	color: #FFFFFF;
+	z-index: 100;
+
+    -webkit-animation: myOrbitLong 26s linear infinite; /* Chrome, Safari 5 */
+       -moz-animation: myOrbitLong 26s linear infinite; /* Firefox 5-15 */
+         -o-animation: myOrbitLong 26s linear infinite; /* Opera 12+ */
+            animation: myOrbitLong 26s linear infinite; /* Chrome, Firefox 16+, 
+                                                      IE 10+, Safari 5 */
+}
+
+.achievement {
+	padding: 5px;
+	background-color: #517b48;
+	border: 5px solid #82a45c;
+	margin: 10px;
+	height: 100px;
+	border-radius: 90px;
+	position: absolute;
+	right: 0px;
+	top: -100%;
+	color: #82a45c;
+	z-index: 100;
+
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	transition: all 1s ease-in-out;
+}
+
+.achievement img, .achievement p {
+	display: inline-block;
+}
+
+.achievement img {
+	float: left;
+	border-radius: 90px;
+}
+
+.achievement p {
+	padding-left: 10px;
+	padding-right: 50px;
+	margin: 0;
+	font-size: 28px;
+	line-height: 36px;
+}
+
+.achievement p small {
+	display: block;
+	line-height: 16px;
+	font-size: 18px;
+	line-height: 20px;
+}
+
+.extra {
+	position: absolute;
+}
