@@ -165,7 +165,7 @@ $(function() {
 			method: 'feed',
 			link: document.location.href,
 			caption: 'Click click!',
-			description: 'i clicked ' + score + ' times!'
+			description: 'i clicked ' + score + ' times! can you beat me!!!'
 		}, function(response){});		
 	}
 });
